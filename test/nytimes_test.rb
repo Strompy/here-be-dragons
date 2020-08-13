@@ -25,10 +25,8 @@ class NytimesTest < Minitest::Test
 
   def test_it_can_get_all_stories_with_subsection_of_politics
     #Set your code to the local variable, "result"
-    stories = hash[:results]
-    result = stories.reduce([]) do |result, story|
-      result << story if story[:subsection] == "Politics"
-      result
+    result = hash[:results].find_all do |story|
+      story[:subsection] == "Politics"
     end
 
     assert result.is_a? (Array)
